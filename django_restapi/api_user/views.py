@@ -43,7 +43,7 @@ class AppUserView(APIView):
 
     def delete(self, request, **kwargs):
         if kwargs.get('uid') is None:
-            return  Response("invalid request", status=status.HTTP_400_BAD_REQUEST)
+            return Response("invalid request", status=status.HTTP_400_BAD_REQUEST)
         else:
             uid = kwargs.get('uid')
             user_object = AppUser.objects.get(pk=uid)

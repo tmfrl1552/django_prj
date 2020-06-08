@@ -27,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -40,6 +39,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'api_user',
     'image_app',
+    'api_children',
+    'api_result',
 ]
 
 MIDDLEWARE = [
