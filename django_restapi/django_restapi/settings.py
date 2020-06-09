@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'api_user',
     'image_app',
     'api_children',
+    'api_comments',
     'api_result',
 ]
 

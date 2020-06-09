@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/children/', include('api_children.urls'), name='api_children'),
     path('api/result/', include('api_result.urls'), name='api_result'),
+    path('api/comments/', include('api_comments.urls'), name='api_comments'),
     path('api/appuser/', include('api_user.urls'), name='api_user'),
     url(r'^image/', include('image_app.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
