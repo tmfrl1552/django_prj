@@ -4,13 +4,20 @@ from rest_framework.serializers import (
     ModelSerializer,
 )
 
-from .models import UserImage
+from .models import UserImage, UserProfile
 
 
-class imageSerializer(ModelSerializer):
+class UserimageSerializer(ModelSerializer):
 
     class Meta:
         model = UserImage
         fields = [
             'uimage'
+        ]
+
+class UserprofileSerializer(ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = [
+            'uprofile'
         ]
