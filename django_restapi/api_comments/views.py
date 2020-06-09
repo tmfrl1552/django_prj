@@ -3,6 +3,9 @@ from rest_framework.response import Response
 from .serializers import CommentsSerializer
 from rest_framework import status
 from.models import Comments
+from django.conf import settings
+
+
 
 
 class CommentsView(APIView):
@@ -47,3 +50,18 @@ class CommentsView(APIView):
             comments_object = Comments.objects.get(pk=itype)
             comments_object.delete()
             return Response("ok", status=status.HTTP_201_CREATED)
+
+
+class TreemodelView(APIView):
+    def get(self, request, **kwargs):
+        if kwargs.get('uimage') is None:
+            return Response("invalid request", status=status.HTTP_400_BAD_REQUEST)
+
+        else:
+            uimage = settings.MEDIA_ROOT+'\\userimage\\'+kwargs.get('uimage')
+            # model 호출하기
+            #itype = Model(uimage)
+            itype = 1
+            comments_serializer = CommentsSerializer(Comments.objects.get(pk=itype))
+            #return Response(uimage, status=status.HTTP_200_OK)
+            return Response(comments_serializer.data, status=status.HTTP_200_OK)
