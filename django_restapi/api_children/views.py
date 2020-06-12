@@ -23,4 +23,11 @@ class ChildrenView(APIView):
             user_id = kwargs.get('appuserId')
             children_serializer = ChildrenSerializer(Children.objects.filter(uid=user_id), many=True)
             return Response(children_serializer.data, status=status.HTTP_200_OK)
-
+    def delete(self, request, **kwargs):
+        if kwargs.get('c_id') is None:
+            return Response("invalid request", status=status.HTTP_400_BAD_REQUEST)
+        else:
+            c_id = kwargs.get('c_id')
+            children_obj = Children.objects.get(pk=c_id)
+            children_obj.delete()
+            return Response("Success delete!", status=status.HTTP_201_CREATED)
