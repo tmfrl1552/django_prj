@@ -9,7 +9,7 @@ class Children(models.Model):
     age = models.CharField(max_length=10)
     gender = models.CharField(max_length=10)
     name = models.CharField(max_length=20)
-    image = models.CharField(max_length=60)
+    image = models.CharField(max_length=60, null=True, blank=True)
 
     class Meta:
         db_table = 'Children'
