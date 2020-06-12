@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from .serializers import ResultSerializer
 from rest_framework import status
 from.models import Result
+from urllib import parse
 
 
 class ResultView(APIView):
@@ -23,9 +24,8 @@ class ResultView(APIView):
                 return Response(result_queryset_serializer.data, status=status.HTTP_200_OK)
         else:
             user_id = kwargs.get('appuserId')
-            c_name = kwargs.get('childrenName')
+            c_name = parse.unquote(kwargs.get('childrenName'))
             r_queryset1 = Result.objects.filter(uid=user_id)
-            r_queryset2 = r_queryset1.get(name=c_name)
-            result_serializer = ResultSerializer(r_queryset2)
-            #result_serializer = ResultSerializer(Result.objects.filter(uid=user_id, name=c_name))
+            r_queryset2 = r_queryset1.filter(name=c_name)
+            result_serializer = ResultSerializer(r_queryset2, many=True)
             return Response(result_serializer.data, status=status.HTTP_200_OK)
