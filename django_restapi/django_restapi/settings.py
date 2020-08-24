@@ -83,8 +83,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'art_db',
         'USER': 'admin',
-        'PASSWORD': '07290729',
-        'HOST': 'db.clanwtpxh4kq.ap-northeast-2.rds.amazonaws.com',
+        'PASSWORD': '비밀번호',
+        'HOST': '서버주소',
         'PORT': '3306',
     }
 }
