@@ -60,8 +60,7 @@ class TreemodelView(APIView):
         else:
             uimage = settings.MEDIA_ROOT+'\\userimage\\'+kwargs.get('uimage')
             # model 호출하기
-            #itype = Model(uimage)
-            itype = 1
+            itype = Model(uimage)
             comments_serializer = CommentsSerializer(Comments.objects.get(pk=itype))
             #return Response(uimage, status=status.HTTP_200_OK)
             return Response(comments_serializer.data, status=status.HTTP_200_OK)
